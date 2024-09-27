@@ -109,10 +109,13 @@ export function useRoomAudio({ peerRoom }: UseRoomAudioConfig) {
       if (isSpeakingToRoom) {
         if (!audioStream) {
           const newSelfStream = await navigator.mediaDevices.getUserMedia({
-            audio: selectedAudioDeviceId
-              ? { deviceId: selectedAudioDeviceId }
-              : true,
-            video: false,
+            audio: {
+                deviceId: selectedAudioDeviceId,
+                sampleRate: 48000,      // Увеличение частоты дискретизации до 48 кГц
+                channelCount: 2,        // Стереозвук
+                bitrate: 256000         // Установить битрейт 256 кб/с
+                  },
+           video: false,
           })
 
           peerRoom.addStream(newSelfStream, null, {
