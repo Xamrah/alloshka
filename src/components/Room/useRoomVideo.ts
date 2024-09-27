@@ -56,6 +56,8 @@ export function useRoomVideo({ peerRoom }: UseRoomVideoConfig) {
           audio: false,
           video: {
             deviceId: firstVideoDevice.deviceId,
+            width: { ideal: 1920 },
+            height: { ideal: 1080 }
           },
         })
 
@@ -192,6 +194,8 @@ export function useRoomVideo({ peerRoom }: UseRoomVideoConfig) {
       audio: false,
       video: {
         deviceId,
+        width: { ideal: 1920 },
+        height: { ideal: 1080 }
       },
     })
 
